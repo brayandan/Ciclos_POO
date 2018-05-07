@@ -7,6 +7,8 @@ abstract class Linea{
   }
 
 
+  abstract void display();
+
   void setPuntoinicial(PVector a){
     puntoinicial=a;
   }

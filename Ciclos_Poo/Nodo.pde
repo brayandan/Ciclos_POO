@@ -10,7 +10,7 @@ abstract class Nodo {
 
   abstract void display();
 
-  abstract boolean pick(int x, int y);
+  //abstract boolean pick(int x, int y);
 
   void setPosicion(PVector pos) {
     posicion = pos;
