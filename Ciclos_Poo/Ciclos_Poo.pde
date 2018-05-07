@@ -2,7 +2,9 @@ Grafo[] nivel;
 Table [] puntos= new Table [8];
 Table [] Graf=new Table [8];
 Table tabladejuego1;
-int level, niveles=0, cantidad=8,nodot=20;
+PVector puntoin, puntofi;
+boolean control, P, Q;
+int level, niveles=0, cantidad=8, nodot=20, nodoin, nodofi;
 
 void setup() {
   size (800, 600);
@@ -23,9 +25,19 @@ void setup() {
   Graf[6]=loadTable("Graf7.csv");
   Graf[7]=loadTable("Graf8.csv");
   nivel=new Grafo[cantidad];
-  for(int i=0; i<nivel.length;i++) 
-  nivel[i]=new Grafo(puntos[i],Graf[i]);
+  for (int i=0; i<nivel.length; i++) 
+    nivel[i]=new Grafo(puntos[i], Graf[i]);
 }
 void draw() {
   jugar(niveles);
+}
+void mousePressed () {
+  if (niveles!=0) {
+    nivel[niveles-1].mouse1();
+  }
+}
+void mouseReleased() {
+  if (niveles!=0) {
+    nivel[niveles-1].mouse2();
+  }
 }

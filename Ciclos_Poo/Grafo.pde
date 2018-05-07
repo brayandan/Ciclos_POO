@@ -1,8 +1,6 @@
 class Grafo {
   Table tabladejuego, tabladejuego1;
-  int tnodo, tgrafo=0, pruebamouse, nodoin, nodofi;
-  boolean control, P, Q;
-  PVector puntoin, puntofi;
+  int tnodo, tgrafo=0, pruebamouse;
   ArrayList<PVector> linea1 = new ArrayList<PVector>();
   ArrayList<PVector> linea2 = new ArrayList<PVector>();
   Nodo[] nodo;
@@ -68,23 +66,9 @@ class Grafo {
     return tabladejuego;
   }
 
-  void home() {
-    strokeWeight(2);
-    stroke(0, 0, 0);
-    fill(41, 74, 255);
-    ellipse(760, 40, 35, 35);
-    stroke(255, 255, 255);
-    fill(255, 255, 255);
-    rect(755, 37, 10, 10, 1);
-    triangle(753, 37, 767, 37, 760, 31);
-    if (mousePressed) {
-      if (760-17<=mouseX && mouseX<=760+17 && 40-17<=mouseY && mouseY<=40+17) {
-        niveles=0;
-      }
-    }
-  }
 
-  void mousePressed () {
+
+  void mouse1() {
     for (int i=0; i<tnodo; i++) {
       if (mouseX<=(nodo[i].posicion.x+nodot) && mouseX>=(nodo[i].posicion.x-nodot) && mouseY<=(nodo[i].posicion.y+nodot) && mouseY>=(nodo[i].posicion.y-nodot)) {
         switch(pruebamouse) {
@@ -103,21 +87,23 @@ class Grafo {
     }
   }
 
-  void mouseReleased () {
+  void mouse2() {
     for (int i=0; i<tnodo; i++) {
       if (mouseX<=(nodo[i].posicion.x+nodot) && mouseX>=(nodo[i].posicion.x-nodot) && mouseY<=(nodo[i].posicion.y+nodot) && mouseY>=(nodo[i].posicion.y-nodot)) {
         PVector puntoprueba;
         puntoprueba =nodo[i].posicion;
-        if (puntoin.x!=puntoprueba.x || puntoin.y!=puntoprueba.y) {
-          puntofi = nodo[i].posicion;
-          nodofi=i;
-          Q=false;
-          P=true;
-          pruebamouse=0;
-        }
-        if (puntoin.x==puntoprueba.x && puntoin.y==puntoprueba.y) {
-          P=true;
-          pruebamouse=1;
+        if ( puntoin != null&& puntofi != null) {
+          if (puntoin.x!=puntoprueba.x || puntoin.y!=puntoprueba.y) {
+            puntofi = nodo[i].posicion;
+            nodofi=i;
+            Q=false;
+            P=true;
+            pruebamouse=0;
+          }
+          if (puntoin.x==puntoprueba.x && puntoin.y==puntoprueba.y) {
+            P=true;
+            pruebamouse=1;
+          }
         }
       }
     }
@@ -158,8 +144,9 @@ class Grafo {
     for (int i = 0; i<linea1.size()-1; i++) {
       line(linea1.get(i).x, linea1.get(i).y, linea1.get(i+1).x, linea1.get(i+1).y);
     }
+
+    println(puntoin, puntofi);
+    println(pruebamouse);
     popStyle();
-    home();
-    jugar1();
   }
 }

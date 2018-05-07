@@ -64,7 +64,9 @@ void jugar(int a)
     for (int i=1; i<9; i++) {
       if (a==i) {
         nivel[i-1].display();
+        nivel[i-1].jugar1();
       }
     }
+    
   }
 }
