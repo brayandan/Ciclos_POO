@@ -9,8 +9,6 @@ abstract class Boton {
     setValor(val);
   }
 
-
-
   void setPosicion(PVector pos) {
     posicion=pos;
   }
@@ -31,7 +29,6 @@ abstract class Boton {
   int getValor () {
     return valor;
   }
-
   
   abstract void display();
   

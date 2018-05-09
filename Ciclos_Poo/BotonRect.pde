@@ -1,11 +1,10 @@
 class BotonRect extends Boton {
-  int borde, txtSize;
+  int borde, txtSize,tipo;
   PVector dimensiones;
-  String  texto;
-  boolean tipo;
+  String  texto; 
   color txtColor;
 
-  BotonRect(color col, PVector posi, int val, int bord, int txts, PVector dim, String txt, boolean tip, color txtC) {
+  BotonRect(color col, PVector posi, int val, int bord, int txts, PVector dim, String txt, int tip, color txtC) {
     super(col, posi, val);
     setBorde(bord);
     setDimensiones(dim);
@@ -14,7 +13,6 @@ class BotonRect extends Boton {
     setTxtSize(txts);
     setTxtColor(txtC);
   }
-
 
 
   void setTxtColor(color txcolo) {
@@ -35,10 +33,10 @@ class BotonRect extends Boton {
   int getTxtSize () {
     return txtSize;
   }
-  void setTipo(boolean tip) {
+  void setTipo(int tip) {
     tipo=tip;
   }
-  boolean getTipo() {
+  int getTipo() {
     return tipo;
   }
 
@@ -64,7 +62,6 @@ class BotonRect extends Boton {
     rectMode(CENTER);
     rect(posicion.x, posicion.y, dimensiones.x, dimensiones.y, borde);
     fill(txtColor);
-
     textSize(txtSize);
     textAlign(CENTER);
     text(texto, posicion.x, posicion.y);
@@ -73,10 +70,16 @@ class BotonRect extends Boton {
 
   void asignarValor() {
     if (mousePressed && mouseX<=posicion.x+(dimensiones.x/2) && mouseX>=posicion.x-(dimensiones.x/2) && mouseY<=posicion.y+(dimensiones.y/2) && mouseY>=posicion.y-(dimensiones.y/2)) {
-      if (tipo) {
+      switch(tipo) {
+        case 1:
         niveles=valor;
-      } else {
+        break;
+        case 2:
         nodot=valor;
+        break;
+        case 3:
+        creacion=valor;
+        break;
       }
     }
   }

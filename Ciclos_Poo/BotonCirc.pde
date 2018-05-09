@@ -2,7 +2,7 @@ class BotonCirc extends Boton {
   boolean tipo;
 
   BotonCirc(color col, PVector posi, int val, boolean dib) {
-    super(col, posi,val);
+    super(col, posi, val);
     setTipo(dib);
   }
 
@@ -41,10 +41,37 @@ class BotonCirc extends Boton {
       arc(710, 40, 15, 15, -PI, PI/2);
     }
   }
-  
-  void asignarValor(){
-    if(mousePressed && sqrt(pow(mouseX-posicion.x,2)+pow(mouseY-posicion.y,2))<=(35/2)){
+
+  void asignarValor() {
+    if (mousePressed && sqrt(pow(mouseX-posicion.x, 2)+pow(mouseY-posicion.y, 2))<=(35/2)) {
+      for (int i = linea1.size() - 1; i >= 0; i--) {
+        linea1.remove(i);
+      }
+      for (int i = linea2.size() - 1; i >= 0; i--) {
+        linea2.remove(i);
+      }
+      for (int i = puntoscrear.size() - 1; i >= 0; i--) {
+        puntoscrear.remove(i);
+      }
+      for (int i = lineacrear.size() - 1; i >= 0; i--) {
+        lineacrear.remove(i);
+      }
+      for (int i = lineacrear2.size() - 1; i >= 0; i--) {
+        lineacrear2.remove(i);
+      }
+      if (niveles>0) {
+        nivel[niveles-1].setTabladelgrafo1(Graff[niveles-1], Graf[niveles-1]);
+      }
+      control=true;      
       niveles=valor;
+      nodofi=-1;
+      nodoin=-1;
+      creacion=0;
+      //algo=true; 
+      //puntofinal=pun;
+      //for (int i = linea2.size() - 1; i >= 0; i--) {
+      //  linea2.remove(i);
+      //}
     }
   }
 }
